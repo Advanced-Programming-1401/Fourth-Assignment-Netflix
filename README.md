@@ -10,6 +10,7 @@ In this assignment, you will create a simulation of Netflix. The program should 
 - Learn the difference between Static and Instance variables
 - Learn about polymorphism
 - Get familiar with interface in java
+- Get familiar with UML diagram
 - Use Git for version control and collaborate on a codebase
 - Write a report on the assignment
 
@@ -35,6 +36,7 @@ In this assignment, you will create a simulation of Netflix. The program should 
     - `viewFavorites`: Shows the list of the favorite movies of the user.
     - `getRecommendations`: Gives the list of the user's recommended movies. Returns this list as an arraylist.
 9. Commit your changes, push your commits to your own fork on Github, and create a pull request to merge your chenges to the `main` branch of your own fork on Github.
+10. Write a report. Your report should contain UML diagram for each class.
 
 ## Notes
 - The code provided in this repository gives you a template to work with and build your project. You are allowed to:
