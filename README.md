@@ -22,14 +22,12 @@ In this assignment, you will create a simulation of Netflix. The program should 
 6. You should use inheritence efficiently for `Movie` class (Read the comments). It has an attribute more than `TVShow` class (`length`) which is the length of the movie.
 7. Implement the predefined methods in the `NetflixService` class, based on the explanations below:
     - `createAccount`: Creates an account for a user with the provided username and password. A unique password should be provided.
-    - `login`: Performs any needed operations of the login process in the `NetflixService` class, if there exists any user with such username and password.
-    - `logout`: Performs any needed operations of the logout process (exitting from the account) in the `NetflixService` class, if a user is logged in to its account.
+    - `login`: Performs any needed operations of the login process, if there exists any user with such username and password.
+    - `logout`: Performs any needed operations of the logout process (exitting from the account), if a user is logged in to its account.
     - `searchByTitle`: Searches among all the movies by the provided title. Returns an arraylist of the found movies.
     - `searchByGenre`: Searches among all the movies by the provided genre. Returns an arraylist of the found movies.
     - `searchByReleaseYear`: Searches among all the movies by the provided release year. Returns an arraylist of the found movies.
 8. Implement the predefined methods in the `User` class, based on the explanations below:
-    - `login`: Performs any needed operations of the login process in the `User` class, if there exists any user with such username and password.
-    - `logout`: Performs any needed operations of the logout process (exitting from the account) in the `User` class, if a user is logged in to its account.
     - `searchByTitle`: Searches among the user's favorite or previously seen movies, by the provided title. Returns an arraylist of the found movies.
     - `searchByGenre`: Searches among the user's favorite or previously seen movies, by the provided genre. Returns an arraylist of the found movies.
     - `searchByReleaseYear`: Searches among the user's favorite or previously seen movies, by the provided release year. Returns an arraylist of the found movies.
