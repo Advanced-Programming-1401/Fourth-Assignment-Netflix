@@ -3,16 +3,10 @@ package org.example;
 import java.util.ArrayList;
 
 class NetflixService {
-    private ArrayList<User> users;
-    private ArrayList<TVShow> tvShows;
-    private ArrayList<Movie> movies;
-    private User currentUser;
-
-    public NetflixService() {
-        this.users = new ArrayList<User>();
-        this.tvShows = new ArrayList<TVShow>();
-        this.movies = new ArrayList<Movie>();
-    }
+    /*
+     *The NetflixService should have an Arraylist of users, tv shows and movies.
+     *The NetflixService should have a User object which represents current user.
+     */
 
     public void createAccount(String username, String password) {
         // Implement create account logic here

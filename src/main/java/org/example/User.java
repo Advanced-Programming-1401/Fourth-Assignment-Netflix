@@ -3,33 +3,24 @@ package org.example;
 import java.util.ArrayList;
 
 class User {
-    private String username;
-    private String password;
-    private ArrayList<TVShow> favorites;
-    private ArrayList<TVShow> viewingHistory;
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.favorites = new ArrayList<TVShow>();
-        this.viewingHistory = new ArrayList<TVShow>();
-    }
-    public boolean login(String username, String password) {
-        // Implement login logic here
-        return false;
-    }
-    public void logout() {
-        // Implement logout logic here
-    }
+    /*
+    * The user should contain username password.
+    * The user should contain an ArrayList of favorite shows and watch history.
+    * FUNCTION: the user should have a function to watch a show and add it to watch history.
+    *  *** NOTE: All search functions in user are for searching in favorite shows ***
+    */
+
+
     public ArrayList<TVShow> searchByTitle(String title) {
-        // Implement search by title logic here
+        // Implement search by title in favorite shows  logic here
         return null;
     }
     public ArrayList<TVShow> searchByGenre(String genre) {
-        // Implement search by genre logic here
+        // Implement search by genre in favorite shows  logic here
         return null;
     }
     public ArrayList<TVShow> searchByReleaseYear(int year) {
-        // Implement search by release year logic here
+        // Implement search by release year in favorite shows logic here
         return null;
     }
     public void addToFavorites(TVShow show) {
