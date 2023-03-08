@@ -8,6 +8,14 @@ class NetflixService {
      *The NetflixService should have a User object which represents current user.
      */
 
+    public void addTVShow(TVShow tvShow){
+        // Implement add tv show logic here
+    }
+
+    public void addMovie(Movie movie){
+        // Implement add movie logic here
+    }
+
     public void createAccount(String username, String password) {
         // Implement create account logic here
     }
