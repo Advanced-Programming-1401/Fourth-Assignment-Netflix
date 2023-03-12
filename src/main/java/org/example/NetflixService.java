@@ -3,30 +3,77 @@ package org.example;
 import java.util.ArrayList;
 
 class NetflixService {
-    /*
-     *The NetflixService should have an Arraylist of users, tv shows and movies.
-     *The NetflixService should have a User object which represents current user.
-     */
+    private static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<TVShow> tvShows = new ArrayList<>();
+    private User currentUser;
 
-    public void addTVShow(TVShow tvShow){
+    //Constructors
+    public NetflixService(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    //Getters and Setters
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public static void setUsers(ArrayList<User> users) {
+        NetflixService.users = users;
+    }
+
+    public static ArrayList<TVShow> getTvShows() {
+        return tvShows;
+    }
+
+    public static void setTvShows(ArrayList<TVShow> tvShows) {
+        NetflixService.tvShows = tvShows;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    //Service - Related Functions
+    public void addTVShow(TVShow tvShow) {
         // Implement add tv show logic here
     }
 
-    public void addMovie(Movie movie){
+    public void addMovie(Movie movie) {
         // Implement add movie logic here
     }
 
-    public void createAccount(String username, String password) {
-        // Implement create account logic here
+    public static boolean isUserExist(String username) {
+        for (User user : users) {
+            if (user.getUserName().equals(username)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean login(String username, String password) {
-        // Implement login logic here
+    public static void createAccount(String username, String password) {
+        if (!isUserExist(username)) {
+            User newUser = new User(username, password);
+        } else {
+            System.out.println("This user already exists");
+        }
+    }
+
+    public static boolean login(String username, String password) {
+        for (User user : users) {
+            if (user.getUserName().equals(username) && user.getPassWord().equals(password)) {
+                return true;
+            }
+        }
         return false;
     }
 
     public void logout() {
-        // Implement logout logic here
+        this.currentUser = null;
     }
 
     public ArrayList<TVShow> searchByTitle(String title) {
@@ -43,7 +90,5 @@ class NetflixService {
         // Implement search by release year logic here
         return null;
     }
-
-
 }
 

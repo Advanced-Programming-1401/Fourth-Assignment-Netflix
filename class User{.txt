@@ -1,0 +1,41 @@
+class User{
+
+username
+password
+Arraylist<Movie> favorites
+Arraylist<Movie> watchHistory
+
+//Constructor
+
+//Getters
+getUsername
+getPassword
+
+//Setters
+setUsername
+setPassword
+
+ArrayList<TVShow> searchByTitle(title)
+ArrayList<TVShow> searchByGenre(genre)
+ArrayList<TVShow> searchByReleaseYear(year)
+addToFavorates(TVShow)
+addToWatchHistory(TVShow)
+viewFavorites()
+ArrayList<TVShow> getRecommendations()
+
+
+}
+
+---------------------------------------------
+
+class TVShow{
+title
+genre
+release year
+duration
+rating
+ArrayList<String> cast
+
+//Constructor
+
+}
