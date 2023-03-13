@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-class NetflixService {
+class NetflixService implements searchAndShow {
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<TVShow> tvShows = new ArrayList<>();
     private User currentUser;
@@ -17,12 +17,25 @@ class NetflixService {
         return users;
     }
 
+//    public void setCurrentUser(User currentUser){
+//        this.currentUser = currentUser;
+//    }
+
     public static void setUsers(ArrayList<User> users) {
         NetflixService.users = users;
     }
 
     public static ArrayList<TVShow> getTvShows() {
         return tvShows;
+    }
+
+    public static TVShow getASingleTVShow(String Title) {
+        for (TVShow tvShow : tvShows) {
+            if (tvShow.getTitle().equals(Title)) {
+                return tvShow;
+            }
+        }
+        return null;
     }
 
     public static void setTvShows(ArrayList<TVShow> tvShows) {
@@ -39,14 +52,10 @@ class NetflixService {
 
     //Service - Related Functions
     public void addTVShow(TVShow tvShow) {
-        // Implement add tv show logic here
+        tvShows.add(tvShow);
     }
 
-    public void addMovie(Movie movie) {
-        // Implement add movie logic here
-    }
-
-    public static boolean isUserExist(String username) {
+    public static boolean doesUserExist(String username) {
         for (User user : users) {
             if (user.getUserName().equals(username)) {
                 return true;
@@ -56,39 +65,93 @@ class NetflixService {
     }
 
     public static void createAccount(String username, String password) {
-        if (!isUserExist(username)) {
+        if (!doesUserExist(username)) {
             User newUser = new User(username, password);
+            users.add(newUser);
+            System.out.println("AN ACCOUNT FOR USER " + newUser.getUserName() + " HAS BEEN SUCCESSFULLY CREATED");
         } else {
-            System.out.println("This user already exists");
+            System.out.println("THIS USERNAME ALREADY EXISTS");
         }
     }
 
-    public static boolean login(String username, String password) {
+    public void login(String username, String password) {
         for (User user : users) {
             if (user.getUserName().equals(username) && user.getPassWord().equals(password)) {
-                return true;
+                setCurrentUser(user);
+                System.out.println(user.getUserName() + " HAS BEEN SUCCESSFULLY LOGGED IN");
+                return;
             }
         }
-        return false;
+        System.out.println("USERNAME OR PASSWORD IS WRONG PLEASE TRY AGAIN");
     }
 
     public void logout() {
+        System.out.println("User " + this.currentUser.getUserName() + " Successfully Logged Out!");
         this.currentUser = null;
     }
 
     public ArrayList<TVShow> searchByTitle(String title) {
-        // Implement search by title logic here
+        ArrayList<TVShow> list = new ArrayList<>();
+
+        for (TVShow tvShow : tvShows) {
+            if (tvShow.getTitle().equals(title)) {
+                list.add(tvShow);
+            }
+        }
+        if (list.size() != 0) {
+            return list;
+        }
         return null;
     }
 
     public ArrayList<TVShow> searchByGenre(String genre) {
-        // Implement search by genre logic here
+        ArrayList<TVShow> list = new ArrayList<>();
+
+        for (TVShow tvShow : tvShows) {
+            if (tvShow.getGenre().equals(genre)) {
+                list.add(tvShow);
+            }
+        }
+        if (list.size() != 0) {
+            return list;
+        }
         return null;
     }
 
     public ArrayList<TVShow> searchByReleaseYear(int year) {
-        // Implement search by release year logic here
+        ArrayList<TVShow> list = new ArrayList<>();
+
+        for (TVShow tvShow : tvShows) {
+            if (tvShow.getReleaseYear() == year) {
+                list.add(tvShow);
+            }
+        }
+        if (list.size() != 0) {
+            return list;
+        }
         return null;
+    }
+
+    @Override
+    public void showList(ArrayList<TVShow> list) {
+        if (list.size() != 0) {
+            for (TVShow tvShow : list) {
+                System.out.println(tvShow.toString());
+            }
+        } else {
+            System.out.println("LIST IS EMPTY");
+        }
+    }
+
+
+    @Override
+    public boolean doesTVShowExist(String title) {
+        for (TVShow tvShow : tvShows) {
+            if (tvShow.getTitle().equals(title)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

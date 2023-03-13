@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-class User {
+class User implements searchAndShow {
     private String userName;
     private String passWord;
     private ArrayList<TVShow> favorites;
@@ -93,6 +93,13 @@ class User {
         return null;
     }
 
+    @Override
+    public void showList(ArrayList<TVShow> list) {
+        for (TVShow tvShow : list) {
+            System.out.println(tvShow.toString());
+        }
+    }
+
     public void addToFavorites(TVShow show) {
         this.favorites.add(show);
     }
@@ -114,6 +121,7 @@ class User {
                 for (int j = 0; j < this.favorites.size(); j++) {
 
                     if (this.favorites.get(j).getRating() > this.favorites.get(i).getRating()) {
+                        //sorting array
                         Collections.swap(this.favorites, j, i);
                     }
                 }
@@ -121,11 +129,35 @@ class User {
 
             ArrayList<TVShow> list = new ArrayList<>();
             //best three movies
-            list.add(this.favorites.get(0));
-            list.add(this.favorites.get(1));
-            list.add(this.favorites.get(2));
+            switch (this.favorites.size()) {
+                case 1 -> {
+                    //RETURNS LIST ONLY WITH ONE TV-SHOW
+                    list.add(this.favorites.get(0));
+                }
+                case 2 -> {
+                    //RETURN LIST ALONG WITH FIRST AND SECOND TV-SHOW
+                    list.add(this.favorites.get(0));
+                    list.add(this.favorites.get(1));
+                }
+                case 3 -> {
+                    //RETURN LIST ALONG WITH FIRST AND SECOND TV-SHOW
+                    list.add(this.favorites.get(0));
+                    list.add(this.favorites.get(1));
+                    list.add(this.favorites.get(2));
+                }
+            }
             return list;
         }
         return null;
+    }
+
+    @Override
+    public boolean doesTVShowExist(String title) {
+        for (TVShow tvShow : this.favorites) {
+            if (tvShow.getTitle().equals(title)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
