@@ -55,7 +55,7 @@ class User implements searchAndShow {
         ArrayList<TVShow> list = new ArrayList<>();
 
         for (TVShow tvShow : getFavorites()) {
-            if (tvShow.getTitle().equals(title)) {
+            if (tvShow.getTitle().equalsIgnoreCase(title)) {
                 list.add(tvShow);
             }
         }
@@ -69,7 +69,7 @@ class User implements searchAndShow {
         ArrayList<TVShow> list = new ArrayList<>();
 
         for (TVShow tvShow : getFavorites()) {
-            if (tvShow.getGenre().equals(genre)) {
+            if (tvShow.getGenre().equalsIgnoreCase(genre)) {
                 list.add(tvShow);
             }
         }
@@ -95,13 +95,19 @@ class User implements searchAndShow {
 
     @Override
     public void showList(ArrayList<TVShow> list) {
-        for (TVShow tvShow : list) {
-            System.out.println(tvShow.toString());
+        if (list != null) {
+            for (TVShow tvShow : list) {
+                System.out.println(tvShow.toString());
+            }
+        } else {
+            System.out.println("NOTHING FOUND TO SHOW");
         }
+        System.out.println();
     }
 
     public void addToFavorites(TVShow show) {
         this.favorites.add(show);
+        System.out.println(show.getTitle() + " HAS BEEN SUCCESSFULLY ADDED TO YOUR FAVORITES\n");
     }
 
     public void viewFavorites() {

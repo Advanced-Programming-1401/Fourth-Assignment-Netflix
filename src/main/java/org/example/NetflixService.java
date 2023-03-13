@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class NetflixService implements searchAndShow {
     private static ArrayList<User> users = new ArrayList<>();
-    private static ArrayList<TVShow> tvShows = new ArrayList<>();
+    public static ArrayList<TVShow> tvShows = new ArrayList<>();
     private User currentUser;
 
     //Constructors
@@ -57,7 +57,7 @@ class NetflixService implements searchAndShow {
 
     public static boolean doesUserExist(String username) {
         for (User user : users) {
-            if (user.getUserName().equals(username)) {
+            if (user.getUserName().equalsIgnoreCase(username)) {
                 return true;
             }
         }
@@ -68,21 +68,21 @@ class NetflixService implements searchAndShow {
         if (!doesUserExist(username)) {
             User newUser = new User(username, password);
             users.add(newUser);
-            System.out.println("AN ACCOUNT FOR USER " + newUser.getUserName() + " HAS BEEN SUCCESSFULLY CREATED");
+            System.out.println("AN ACCOUNT FOR USER " + newUser.getUserName() + " HAS BEEN SUCCESSFULLY CREATED\n");
         } else {
-            System.out.println("THIS USERNAME ALREADY EXISTS");
+            System.out.println("THIS USERNAME ALREADY EXISTS\n");
         }
     }
 
-    public void login(String username, String password) {
+    public boolean login(String username, String password) {
         for (User user : users) {
-            if (user.getUserName().equals(username) && user.getPassWord().equals(password)) {
+            if (user.getUserName().equalsIgnoreCase(username) && user.getPassWord().equals(password)) {
                 setCurrentUser(user);
-                System.out.println(user.getUserName() + " HAS BEEN SUCCESSFULLY LOGGED IN");
-                return;
+                return true;
             }
         }
-        System.out.println("USERNAME OR PASSWORD IS WRONG PLEASE TRY AGAIN");
+        System.out.println("USERNAME OR PASSWORD IS WRONG PLEASE TRY AGAIN\n");
+        return false;
     }
 
     public void logout() {
@@ -94,7 +94,7 @@ class NetflixService implements searchAndShow {
         ArrayList<TVShow> list = new ArrayList<>();
 
         for (TVShow tvShow : tvShows) {
-            if (tvShow.getTitle().equals(title)) {
+            if (tvShow.getTitle().equalsIgnoreCase(title)) {
                 list.add(tvShow);
             }
         }
@@ -108,7 +108,7 @@ class NetflixService implements searchAndShow {
         ArrayList<TVShow> list = new ArrayList<>();
 
         for (TVShow tvShow : tvShows) {
-            if (tvShow.getGenre().equals(genre)) {
+            if (tvShow.getGenre().equalsIgnoreCase(genre)) {
                 list.add(tvShow);
             }
         }
@@ -134,20 +134,22 @@ class NetflixService implements searchAndShow {
 
     @Override
     public void showList(ArrayList<TVShow> list) {
-        if (list.size() != 0) {
+        if (list != null) {
             for (TVShow tvShow : list) {
                 System.out.println(tvShow.toString());
             }
+
         } else {
-            System.out.println("LIST IS EMPTY");
+            System.out.println("NOTHING FOUND TO SHOW");
         }
+        System.out.println();
     }
 
 
     @Override
     public boolean doesTVShowExist(String title) {
         for (TVShow tvShow : tvShows) {
-            if (tvShow.getTitle().equals(title)) {
+            if (tvShow.getTitle().equalsIgnoreCase(title)) {
                 return true;
             }
         }

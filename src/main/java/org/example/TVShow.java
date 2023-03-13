@@ -6,11 +6,11 @@ class TVShow {
     private String title;
     private String genre;
     private int releaseYear;
-    private float rating;
+    private double rating;
     private ArrayList<String> cast = new ArrayList<>();
 
     //Constructor
-    public TVShow(String title, String genre, int releaseYear, float rating, ArrayList<String> cast) {
+    public TVShow(String title, String genre, int releaseYear, double rating, ArrayList<String> cast) {
         this.title = title;
         this.genre = genre;
         this.releaseYear = releaseYear;
@@ -43,7 +43,7 @@ class TVShow {
         this.releaseYear = releaseYear;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -61,9 +61,18 @@ class TVShow {
 
     @Override
     public String toString() {
+        String Cast = "Cast: ";
+
+        for (int i = 0; i < this.cast.size(); i++) {
+            Cast += this.cast.get(i);
+            if (i != this.cast.size() - 1) {
+                Cast += ", ";
+            }
+        }
         return "TVShow{Title: " + this.title + ", " +
                 "Genre: " + this.genre + ", " +
                 "Release Year: " + this.releaseYear + ", " +
-                "Rating: " + this.rating + "}";
+                "Rating: " + this.rating + ", " +
+                Cast + "}";
     }
 }
