@@ -3,6 +3,8 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+////////BONUS TASKS THAT HAS BEEN COMPLETED : INPUT VALIDATION, IMPLEMENTED A EXTRA FEATURE (LIKE AND DISLIKE)
+
 public class Main {
     public static Scanner input = new Scanner(System.in);
 
@@ -58,7 +60,7 @@ public class Main {
 
     public static void userPage(NetflixService netflix) {
         System.out.println("CHOOSE ONE OPTION FROM BELOW\n");
-        System.out.println("1- SEARCH THROUGH ALL OF TV-SHOWS\n2- SEARCH THROUGH YOUR FAVORITE TV-SHOWS\n3- RECOMMENDED TV-SHOWS FROM YOUR FAVORITES\n4- ADD TO YOUR FAVORITES\n5- ADD TV-SHOW TO ALL THE MOVIES\n6- BACK TO MAIN MENU\n");
+        System.out.println("1- SEARCH THROUGH ALL OF TV-SHOWS\n2- SEARCH THROUGH YOUR FAVORITE TV-SHOWS\n3- RECOMMENDED TV-SHOWS FROM YOUR FAVORITES\n4- ADD TO YOUR FAVORITES\n5- ADD TV-SHOW TO ALL THE MOVIES\n6- LIKE OR DISLIKE A TV-SHOW\n7- SHOW A LIST OF SUBMITTED OPINIONS\n8- LOGOUT\n9- BACK TO MAIN MENU\n");
         int optionMenu = input.nextInt();
         input.nextLine();
 
@@ -163,6 +165,50 @@ public class Main {
                 }
             }
             case 6 -> {
+                //LIKE OR DISLIKE A TV-SHOW
+                System.out.println("CHOOSE ONE OPTION FROM BELOW:\n");
+                System.out.println("1- LIKE\n2- DISLIKE\n");
+                optionMenu = input.nextInt();
+                input.nextLine();
+                switch (optionMenu){
+                    case 1 -> {
+                        //LIKE A TV-SHOW
+                        System.out.println("ENTER TITLE OF TV SHOW");
+                        String title = input.nextLine();
+
+                        if (NetflixService.getASingleTVShow(title) != null){
+                            netflix.getCurrentUser().likeTvShow(NetflixService.getASingleTVShow(title));
+                        }
+                        else {
+                            System.out.println("THIS TV-SHOW DOESN'T EXIST\n");
+                        }
+                    }
+                    case 2 -> {
+                        //DISLIKE A TV-SHOW
+                        System.out.println("ENTER TITLE OF TV SHOW");
+                        String title = input.nextLine();
+
+                        if (NetflixService.getASingleTVShow(title) != null){
+                            netflix.getCurrentUser().dislikeTvShow(NetflixService.getASingleTVShow(title));
+                        }
+                        else {
+                            System.out.println("THIS TV-SHOW DOESN'T EXIST\n");
+                        }
+                    }
+                }
+            }
+            case 7 -> {
+                //SHOW A LIST OF SUBMITTED OPINIONS
+                netflix.getCurrentUser().showList(netflix.getCurrentUser().getLikedTvShow());
+            }
+            case 8 -> {
+                //LOG OUT
+                netflix.setCurrentUser(null);
+                System.out.println("YOU HAVE SUCCESSFULLY LOGGED OUT");
+                runMenu(netflix);
+            }
+            case 9 -> {
+                //BACK TO MAIN MENU
                 runMenu(netflix);
             }
         }

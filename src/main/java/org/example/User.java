@@ -3,12 +3,14 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
-class User implements searchAndShow {
+class User implements searchAndShow{
     private String userName;
     private String passWord;
     private ArrayList<TVShow> favorites;
     private ArrayList<TVShow> watchHistory;
+    private HashMap<TVShow, USEROPINION> likedTvShow;
 
     //Constructor
     public User(String userName, String passWord) {
@@ -16,6 +18,7 @@ class User implements searchAndShow {
         this.passWord = passWord;
         this.favorites = new ArrayList<>();
         this.watchHistory = new ArrayList<>();
+        this.likedTvShow = new HashMap<>();
     }
 
     //Getter and Setters
@@ -49,6 +52,10 @@ class User implements searchAndShow {
 
     public void setWatchHistory(ArrayList<TVShow> watchHistory) {
         this.watchHistory = watchHistory;
+    }
+
+    public HashMap<TVShow, USEROPINION> getLikedTvShow() {
+        return likedTvShow;
     }
 
     public ArrayList<TVShow> searchByTitle(String title) {
@@ -101,6 +108,18 @@ class User implements searchAndShow {
             }
         } else {
             System.out.println("NOTHING FOUND TO SHOW");
+        }
+        System.out.println();
+    }
+    public void showList(HashMap<TVShow, USEROPINION> likedTvShow){
+        if (likedTvShow.size() == 0){
+            System.out.println("NOTHING FOUND TO SHOW");
+        }
+        else {
+            System.out.println("A LIST OF LIKED AND DISLIKED TV-SHOWS");
+            for (TVShow tvShow : likedTvShow.keySet()){
+                System.out.println(tvShow.getTitle() + " IS " + likedTvShow.get(tvShow));
+            }
         }
         System.out.println();
     }
@@ -165,5 +184,27 @@ class User implements searchAndShow {
             }
         }
         return false;
+    }
+    public void likeTvShow (TVShow tvShow){
+        this.likedTvShow.putIfAbsent(tvShow, USEROPINION.INDIFFERENT);
+
+        if (this.likedTvShow.get(tvShow) == USEROPINION.LIKED){
+            System.out.println("YOU HAVE ALREADY LIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
+        }
+        else {
+            this.likedTvShow.replace(tvShow, USEROPINION.LIKED);
+            System.out.println("YOU HAVE LIKED " + tvShow.getTitle() + "\n");
+        }
+    }
+    public void dislikeTvShow (TVShow tvShow){
+        this.likedTvShow.putIfAbsent(tvShow, USEROPINION.INDIFFERENT);
+
+        if (this.likedTvShow.get(tvShow) == USEROPINION.DISLIKED){
+            System.out.println("YOU HAVE ALREADY DISLIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
+        }
+        else {
+            this.likedTvShow.replace(tvShow, USEROPINION.DISLIKED);
+            System.out.println("YOU HAVE DISLIKED " + tvShow.getTitle() + "\n");
+        }
     }
 }

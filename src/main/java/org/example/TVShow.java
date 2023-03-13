@@ -7,6 +7,7 @@ class TVShow {
     private String genre;
     private int releaseYear;
     private double rating;
+    private int likes;
     private ArrayList<String> cast = new ArrayList<>();
 
     //Constructor
@@ -16,6 +17,7 @@ class TVShow {
         this.releaseYear = releaseYear;
         this.rating = rating;
         this.cast = cast;
+        this.likes = 0;
     }
 
     //Getter and Setters
