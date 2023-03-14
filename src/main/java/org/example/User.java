@@ -179,7 +179,7 @@ class User implements searchAndShow{
     @Override
     public boolean doesTVShowExist(String title) {
         for (TVShow tvShow : this.favorites) {
-            if (tvShow.getTitle().equals(title)) {
+            if (tvShow.getTitle().equalsIgnoreCase(title)) {
                 return true;
             }
         }

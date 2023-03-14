@@ -31,7 +31,8 @@ class NetflixService implements searchAndShow {
 
     public static TVShow getASingleTVShow(String Title) {
         for (TVShow tvShow : tvShows) {
-            if (tvShow.getTitle().equals(Title)) {
+            if (tvShow.getTitle().equalsIgnoreCase(Title)) {
+                System.out.println("BANG");;
                 return tvShow;
             }
         }
@@ -64,15 +65,24 @@ class NetflixService implements searchAndShow {
         return false;
     }
 
-    public static void createAccount(String username, String password) {
+    public static boolean createAccount(String username, String password) {
         if (!doesUserExist(username)) {
             User newUser = new User(username, password);
             users.add(newUser);
-            System.out.println("AN ACCOUNT FOR USER " + newUser.getUserName() + " HAS BEEN SUCCESSFULLY CREATED\n");
+            return true;
         } else {
-            System.out.println("THIS USERNAME ALREADY EXISTS\n");
+            return false;
         }
     }
+//    public static String createAccount(String username, String password) {
+//        if (!doesUserExist(username)) {
+//            User newUser = new User(username, password);
+//            users.add(newUser);
+//            System.out.println("AN ACCOUNT FOR USER " + newUser.getUserName() + " HAS BEEN SUCCESSFULLY CREATED\n");
+//        } else {
+//            System.out.println("THIS USERNAME ALREADY EXISTS\n");
+//        }
+//    }
 
     public boolean login(String username, String password) {
         for (User user : users) {
@@ -81,7 +91,6 @@ class NetflixService implements searchAndShow {
                 return true;
             }
         }
-        System.out.println("USERNAME OR PASSWORD IS WRONG PLEASE TRY AGAIN\n");
         return false;
     }
 

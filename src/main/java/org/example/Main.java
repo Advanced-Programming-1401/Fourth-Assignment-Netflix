@@ -171,16 +171,15 @@ public class Main {
                 System.out.println("1- LIKE\n2- DISLIKE\n");
                 optionMenu = input.nextInt();
                 input.nextLine();
-                switch (optionMenu){
+                switch (optionMenu) {
                     case 1 -> {
                         //LIKE A TV-SHOW
                         System.out.println("ENTER TITLE OF TV SHOW");
                         String title = input.nextLine();
 
-                        if (NetflixService.getASingleTVShow(title) != null){
+                        if (NetflixService.getASingleTVShow(title) != null) {
                             netflix.getCurrentUser().likeTvShow(NetflixService.getASingleTVShow(title));
-                        }
-                        else {
+                        } else {
                             System.out.println("THIS TV-SHOW DOESN'T EXIST\n");
                         }
                     }
@@ -189,10 +188,9 @@ public class Main {
                         System.out.println("ENTER TITLE OF TV SHOW");
                         String title = input.nextLine();
 
-                        if (NetflixService.getASingleTVShow(title) != null){
+                        if (NetflixService.getASingleTVShow(title) != null) {
                             netflix.getCurrentUser().dislikeTvShow(NetflixService.getASingleTVShow(title));
-                        }
-                        else {
+                        } else {
                             System.out.println("THIS TV-SHOW DOESN'T EXIST\n");
                         }
                     }

@@ -6,18 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu implements ActionListener{
-    private JFrame menuFrame;
+    private JFrame frame;
     private NetflixService netflix;
 
     public MainMenu(NetflixService netflix){
         this.netflix = netflix;
-        this.menuFrame = new JFrame();
+        this.frame = new JFrame();
 
         //Making up menu frame
-        this.menuFrame.setSize(600, 600);
-        this.menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.menuFrame.setLayout(null);
-        this.menuFrame.setIconImage(new ImageIcon("Netflix Icon.png").getImage());
+        this.frame.setSize(600, 600);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setLayout(null);
+        this.frame.setIconImage(new ImageIcon("Netflix Icon.png").getImage());
 
         //North panel including : current user & site title
         JPanel panel1 = new JPanel();
@@ -66,8 +66,8 @@ public class MainMenu implements ActionListener{
             public void actionPerformed(ActionEvent e) {
                 //if user clicked CREATE AN ACCOUNT button then :
                 if (e.getSource() == button1){
-
-                    menuFrame.dispose();
+                    frame.dispose();
+                    new CreatingAccountPage(netflix);
                 }
             }
         });
@@ -78,16 +78,19 @@ public class MainMenu implements ActionListener{
                 //if user clicked LOGIN AS USER button then :
                 if (e.getSource() == button2){
 
+                    frame.dispose();
+                    new UserLogin(netflix);
                 }
             }
         });
 
-        button2.addActionListener(new ActionListener() {
+        button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if user clicked LOGIN AS USER button then :
                 if (e.getSource() == button2){
 
+                    frame.dispose();
                 }
             }
         });
@@ -102,9 +105,13 @@ public class MainMenu implements ActionListener{
         panel2.add(button3);
 
         //adding panels to main frame
-        this.menuFrame.add(panel1);
-        this.menuFrame.add(panel2);
-        this.menuFrame.setVisible(true);
+        this.frame.add(panel1);
+        this.frame.add(panel2);
+        this.frame.setVisible(true);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
