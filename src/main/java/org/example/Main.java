@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         NetflixService netflix = new NetflixService(null);
         System.out.println("-------------------------------WELCOME TO NETFLIX SITE-------------------------------");
+        new MainMenu(netflix);
 
         //INITIALIZING DEFAULT MOVIE IN SITE
         ArrayList<String> cast = new ArrayList<>();
