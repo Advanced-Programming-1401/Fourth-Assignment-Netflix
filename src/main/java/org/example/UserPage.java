@@ -21,12 +21,14 @@ public class UserPage {
         panel1.setBackground(Color.BLACK);
         panel1.setBounds(0, 0, 600, 100);
         panel1.setLayout(new GridLayout(2, 1));
+        panel1.setBackground(Color.BLACK);
 
         //Central panel including : OPTION MENUS
         JPanel panel2 = new JPanel();
         panel2.setBackground(Color.BLACK);
         panel2.setBounds(0, 100, 600, 500);
         panel2.setLayout(new GridLayout(9, 1));
+        panel2.setBackground(Color.BLACK);
 
         //SITE TITLE
         JLabel label1 = new JLabel();
@@ -36,11 +38,13 @@ public class UserPage {
         //CURRENT USER
         JLabel label2 = new JLabel();
         label2.setText("CURRENT USER: " + netflix.getCurrentUser().getUserName().toUpperCase());
+        label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        label2.setForeground(Color.red);
         label2.setHorizontalAlignment(JLabel.CENTER);
 
         JButton button1 = new JButton("SEARCH THROUGH ALL OF TV-SHOWS");
         button1.setFocusable(false);
-        button1.setForeground(Color.RED);
+        button1.setBackground(Color.red);
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,7 +57,7 @@ public class UserPage {
         });
         JButton button2 = new JButton("SEARCH THROUGH ALL OF FAVORITE TV-SHOWS");
         button2.setFocusable(false);
-        button2.setForeground(Color.RED);
+        button2.setBackground(Color.red);
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,18 +67,18 @@ public class UserPage {
         });
         JButton button3 = new JButton("RECOMMENDED TV-SHOWS FROM YOUR FAVORITES");
         button3.setFocusable(false);
-        button3.setForeground(Color.RED);
+        button3.setBackground(Color.RED);
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JOptionPane.showMessageDialog(null, "THE RESULTS WILL BE SHOWN IN TERMINAL", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                netflix.getCurrentUser().showList(netflix.getCurrentUser().getRecommendations());
+                JOptionPane.showMessageDialog(null, "THE RESULTS WILL BE SHOWN IN TERMINAL PLEASE CHECKOUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                netflix.showList(netflix.getCurrentUser().getRecommendations());
             }
         });
         JButton button4 = new JButton("ADD TO YOUR FAVORITES");
         button4.setFocusable(false);
-        button4.setForeground(Color.RED);
+        button4.setBackground(Color.RED);
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,50 +88,69 @@ public class UserPage {
         });
         JButton button5 = new JButton("ADD TV-SHOW TO ALL THE MOVIES");
         button5.setFocusable(false);
-        button5.setForeground(Color.RED);
+        button5.setBackground(Color.RED);
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
+                new ATAT(netflix);
             }
         });
         JButton button6 = new JButton("LIKE OR DISLIKE A TV-SHOW");
         button6.setFocusable(false);
-        button6.setForeground(Color.RED);
+        button6.setBackground(Color.RED);
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                new UOPINION(netflix);
             }
         });
         JButton button7 = new JButton("SHOW A LIST OF SUBMITTED OPINIONS(LIKE & DISLIKES)");
         button7.setFocusable(false);
-        button7.setForeground(Color.RED);
+        button7.setBackground(Color.RED);
         button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN TERMINAL PLEASE CHECKOUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                netflix.getCurrentUser().showList(netflix.getCurrentUser().getLikedTvShow());
             }
         });
         JButton button8 = new JButton("LOGOUT");
         button8.setFocusable(false);
-        button8.setForeground(Color.RED);
+        button8.setBackground(Color.RED);
         button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                JOptionPane.showMessageDialog(null, "YOU HAVE BEEN SUCCESSFULLY LOGGED OUT", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                netflix.setCurrentUser(null);
+                frame.dispose();
+                new MainMenu(netflix);
             }
         });
         JButton button9 = new JButton("BACK TO MAIN MENU");
         button9.setFocusable(false);
-        button9.setForeground(Color.RED);
+        button9.setBackground(Color.RED);
         button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                frame.dispose();
+                new MainMenu(netflix);
             }
         });
+        button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button2.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button3.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button4.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button5.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button6.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button7.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button8.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button9.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+
         panel1.add(label1);
         panel1.add(label2);
         panel2.add(button1);

@@ -33,6 +33,8 @@ public class STA {
         JLabel label1 = new JLabel();
         label1.setIcon(new ImageIcon("netflix main.jpg"));
         label1.setHorizontalAlignment(JLabel.CENTER);
+        label1.setForeground(Color.RED);
+        label1.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         //CURRENT USER
         JLabel label2 = new JLabel();
@@ -41,7 +43,8 @@ public class STA {
 
         JButton button1 = new JButton("SEARCH BY TITLE");
         button1.setFocusable(false);
-        button1.setForeground(Color.RED);
+        button1.setBackground(Color.red);
+        button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +58,8 @@ public class STA {
         });
         JButton button2 = new JButton("SEARCH BY GENRE");
         button2.setFocusable(false);
-        button2.setForeground(Color.RED);
+        button2.setBackground(Color.RED);
+        button2.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,7 +71,8 @@ public class STA {
         });
         JButton button3 = new JButton("SEARCH BY RELEASE YEAR");
         button3.setFocusable(false);
-        button3.setForeground(Color.RED);
+        button3.setBackground(Color.RED);
+        button3.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

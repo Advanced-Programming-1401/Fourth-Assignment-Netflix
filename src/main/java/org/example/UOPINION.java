@@ -4,12 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 
-public class STF {
+public class UOPINION {
     private NetflixService netflix;
 
-    public STF(NetflixService netflix) {
+    public UOPINION(NetflixService netflix) {
         this.netflix = netflix;
 
         JFrame frame = new JFrame();
@@ -37,58 +36,52 @@ public class STF {
         //CURRENT USER
         JLabel label2 = new JLabel();
         label2.setText("CURRENT USER: " + netflix.getCurrentUser().getUserName().toUpperCase());
-        label2.setForeground(Color.red);
-        label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
         label2.setHorizontalAlignment(JLabel.CENTER);
+        label2.setForeground(Color.RED);
+        label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
-        JButton button1 = new JButton("SEARCH BY TITLE");
+        JButton button1 = new JButton("LIKE A TV-SHOW");
         button1.setFocusable(false);
-        button1.setBackground(Color.RED);
+        button1.setBackground(Color.red);
         button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button1) {
 
                     String title = JOptionPane.showInputDialog(null, "ENTER THE TITLE");
-                    JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                    netflix.showList(netflix.getCurrentUser().searchByTitle(title));
+                    if (netflix.doesTVShowExist(title)) {
+                        netflix.getCurrentUser().likeTvShow(NetflixService.getASingleTVShow(title));
+                        JOptionPane.showMessageDialog(null, "TV-SHOW HAS BEEN SUCCESSFULLY LIKED", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "THIS TV-SHOW DOESN'T EXIST", "NETFLIX ADMIN", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
-        JButton button2 = new JButton("SEARCH BY GENRE");
+        JButton button2 = new JButton("DISLIKE A TV-SHOW");
         button2.setFocusable(false);
-        button2.setBackground(Color.RED);
+        button2.setBackground(Color.red);
         button2.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String genre = JOptionPane.showInputDialog(null, "ENTER THE GENRE");
-                JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                netflix.showList(netflix.getCurrentUser().searchByGenre(genre));
+                String title = JOptionPane.showInputDialog(null, "ENTER THE TITLE");
+                if (netflix.doesTVShowExist(title)) {
+                    netflix.getCurrentUser().dislikeTvShow(NetflixService.getASingleTVShow(title));
+                    JOptionPane.showMessageDialog(null, "TV-SHOW HAS BEEN SUCCESSFULLY DISLIKED", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "THIS TV-SHOW DOESN'T EXIST", "NETFLIX ADMIN", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
-        JButton button3 = new JButton("SEARCH BY RELEASE YEAR");
-        button3.setFocusable(false);
-        button3.setBackground(Color.RED);
-        button3.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
-        button3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                int releaseYear = Integer.parseInt(JOptionPane.showInputDialog(null, "ENTER THE RELEASE YEAR"));
-                JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                netflix.showList(netflix.getCurrentUser().searchByReleaseYear(releaseYear));
-            }
-        });
-        button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
-        button2.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         panel1.add(label1);
         panel1.add(label2);
         panel2.add(button1);
         panel2.add(button2);
-        panel2.add(button3);
         frame.add(panel1);
         frame.add(panel2);
         frame.setVisible(true);

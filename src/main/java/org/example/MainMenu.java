@@ -5,11 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu implements ActionListener{
+public class MainMenu implements ActionListener {
     private JFrame frame;
     private NetflixService netflix;
 
-    public MainMenu(NetflixService netflix){
+    public MainMenu(NetflixService netflix) {
         this.netflix = netflix;
         this.frame = new JFrame();
 
@@ -33,18 +33,18 @@ public class MainMenu implements ActionListener{
 
         //making up north panel components
         JLabel userLabel = new JLabel();
-        JLabel siteImage  = new JLabel();
+        JLabel siteImage = new JLabel();
         ImageIcon netflixImage = new ImageIcon("netflix main.jpg");
         siteImage.setIcon(netflixImage);
-        if (netflix.getCurrentUser() != null){
+        if (netflix.getCurrentUser() != null) {
             userLabel.setText("CURRENT USER: " + netflix.getCurrentUser().getUserName());
-        }
-        else {
+        } else {
             userLabel.setText("CURRENT USER: NULL");
         }
         userLabel.setForeground(Color.RED);
         userLabel.setHorizontalAlignment(JLabel.CENTER);
         siteImage.setHorizontalAlignment(JLabel.CENTER);
+        userLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
 
         //Making up central panel components
@@ -54,6 +54,9 @@ public class MainMenu implements ActionListener{
         button1.setText("CREATE AN ACCOUNT");
         button2.setText("LOGIN AS USER");
         button3.setText("EXIT");
+        button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button2.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button3.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         button1.setBackground(Color.red);
         button2.setBackground(Color.red);
         button3.setBackground(Color.red);
@@ -65,7 +68,7 @@ public class MainMenu implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if user clicked CREATE AN ACCOUNT button then :
-                if (e.getSource() == button1){
+                if (e.getSource() == button1) {
                     frame.dispose();
                     new CreatingAccountPage(netflix);
                 }
@@ -76,7 +79,7 @@ public class MainMenu implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if user clicked LOGIN AS USER button then :
-                if (e.getSource() == button2){
+                if (e.getSource() == button2) {
 
                     frame.dispose();
                     new UserLogin(netflix);
@@ -88,7 +91,7 @@ public class MainMenu implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if user clicked LOGIN AS USER button then :
-                if (e.getSource() == button2){
+                if (e.getSource() == button2) {
 
                     frame.dispose();
                 }
