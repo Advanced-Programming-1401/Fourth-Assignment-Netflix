@@ -11,8 +11,7 @@ class User {
     */
     private String username;
     private String password;
-    private List<TVShow> favoriteList;
-    private List<TVShow> historyList;
+    private static List<TVShow> favoriteList;
 
     public User(String username, String password) {
         this.username = username;
@@ -33,26 +32,56 @@ class User {
         this.password = password;
     }
 
-    public ArrayList<TVShow> searchByTitle(String title) {
-        // Implement search by title in favorite shows  logic here
-        return null;
+    public static ArrayList<TVShow> searchByTitle(String title) {
+        ArrayList<TVShow> found = new ArrayList<TVShow>();
+        for(TVShow tvshow: favoriteList){
+            if(favoriteList.contains(title)){
+                found.add(tvshow);
+            }
+        }
+        return found;
     }
-    public ArrayList<TVShow> searchByGenre(String genre) {
-        // Implement search by genre in favorite shows  logic here
-        return null;
+
+    public static ArrayList<TVShow> searchByGenre(String genre) {
+        ArrayList<TVShow> found = new ArrayList<TVShow>();
+        for(TVShow tvshow: favoriteList){
+            if(favoriteList.contains(genre)){
+                found.add(tvshow);
+            }
+        }
+        return found;
     }
-    public ArrayList<TVShow> searchByReleaseYear(int year) {
-        // Implement search by release year in favorite shows logic here
-        return null;
+
+    public static ArrayList<TVShow> searchByReleaseYear(int year) {
+        ArrayList<TVShow> found = new ArrayList<TVShow>();
+        for(TVShow tvshow: favoriteList){
+            if(favoriteList.contains(year)){
+                found.add(tvshow);
+            }
+        }
+        return found;
     }
-    public void addToFavorites(TVShow show) {
-        // Implement add to favorites logic here
+
+
+    public static void addToFavorites(TVShow show) {
+        favoriteList.add(show);
     }
-    public void viewFavorites() {
-        // Implement view favorites logic here
+
+    public static void viewFavorites() {
+        String data;
+        for(TVShow tvShow : favoriteList){
+            data = tvShow.getTitle() + "/ " + tvShow.getYear() ;
+            System.out.println(data);
+        }
     }
-    public ArrayList<TVShow> getRecommendations() {
-        // Implement get recommendations logic here
-        return null;
+
+    public static ArrayList<TVShow> getRecommendations(String showName){
+        ArrayList<TVShow> Recomm = new ArrayList<TVShow>();
+        for(TVShow tvshow: favoriteList){
+            if(favoriteList.contains(showName)){
+                Recomm.add(tvshow);
+            }
+        }
+        return Recomm;
     }
 }

@@ -55,9 +55,7 @@ class Movie extends TVShow {
     }
 
 
-
-    @Override
-    public String toString() {
+    public String toString(Movie movie) {
         return "Movie{" +
                 "title='" + title + '\'' +
                 ", genre='" + genre + '\'' +

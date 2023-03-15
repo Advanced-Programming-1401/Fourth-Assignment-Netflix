@@ -65,8 +65,8 @@ class TVShow {
         this.rating = rating;
     }
 
-    @Override
-    public String toString() {
+
+    public String toString(TVShow tvshow) {
         return "TVShow{" +
                 "title='" + title + '\'' +
                 ", genre='" + genre + '\'' +

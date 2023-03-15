@@ -9,9 +9,9 @@ class NetflixService {
      */
     Scanner input = new Scanner(System.in);
 
-    private List<User> usersList;
-    private List<TVShow> TVshowList;
-    private List<Movie> movieList;
+    private static List<User> usersList;
+    private static List<TVShow> TVshowList;
+    private static List<Movie> movieList;
 
     public NetflixService() {
         this.usersList = new ArrayList<>();
@@ -19,21 +19,21 @@ class NetflixService {
         this.movieList = new ArrayList<>();
     }
 
-    public void addTVShow(TVShow tvShow){
+    public static void addTVShow(TVShow tvShow){
         // Implement add tv show logic here
         TVshowList.add(tvShow);
     }
 
-    public void addMovie(Movie movie){
+    public static void addMovie(Movie movie){
         // Implement add movie logic here
         movieList.add(movie);
     }
 
-    public void createAccount(User user) {
+    public static void createAccount(User user) {
         usersList.add(user);
     }
 
-    public boolean login(String username, String password) {
+    public static boolean login(String username, String password) {
         for(User user : usersList){
             if(user.getUsername().equals(username) && user.getPassword().equals(password)){
                 return true;
@@ -42,11 +42,11 @@ class NetflixService {
         return false;
     }
 
-    public void logout() {
-
+    public static void logout() {
+        Main.START();
     }
 
-    public ArrayList<TVShow> searchByTitle(String title){
+    public static ArrayList<TVShow> searchByTitle(String title){
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: TVshowList){
             if(TVshowList.contains(title)){
@@ -56,7 +56,7 @@ class NetflixService {
         return found;
     }
 
-    public ArrayList<TVShow> searchByGenre(String genre){
+    public static ArrayList<TVShow> searchByGenre(String genre){
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: TVshowList){
             if(TVshowList.contains(genre)){
@@ -66,7 +66,7 @@ class NetflixService {
         return found;
     }
 
-    public ArrayList<TVShow> searchByReleaseYear(int year) {
+    public static ArrayList<TVShow> searchByReleaseYear(int year) {
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: TVshowList){
             if(TVshowList.contains(year)){
@@ -74,6 +74,30 @@ class NetflixService {
             }
         }
         return found;
+    }
+
+    public static void viewUsers() {
+        String data;
+        for(User user : usersList){
+            data = user.getUsername() ;
+            System.out.println(data);
+        }
+    }
+
+    public static void viewTvshows() {
+        String data;
+        for(TVShow tvShow : TVshowList){
+            data = tvShow.getTitle() + "/ " + tvShow.getYear() ;
+            System.out.println(data);
+        }
+    }
+
+    public static void viewMovies() {
+        String data;
+        for(Movie movie : movieList){
+            data = movie.getTitle() + "/ " + movie.getYear() ;
+            System.out.println(data);
+        }
     }
 
 
