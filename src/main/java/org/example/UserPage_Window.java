@@ -125,7 +125,7 @@ public class UserPage_Window {
             public void actionPerformed(ActionEvent e) {
 
                 JOptionPane.showMessageDialog(null, "YOU HAVE BEEN SUCCESSFULLY LOGGED OUT", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                netflix.setCurrentUser(null);
+                netflix.logout();
                 frame.dispose();
                 new MainMenu_Window(netflix);
             }

@@ -13,22 +13,6 @@ class NetflixService implements searchAndShow_Interface {
     }
 
     //Getters and Setters
-    public static ArrayList<User> getUsers() {
-        return users;
-    }
-
-//    public void setCurrentUser(User currentUser){
-//        this.currentUser = currentUser;
-//    }
-
-    public static void setUsers(ArrayList<User> users) {
-        NetflixService.users = users;
-    }
-
-    public static ArrayList<TVShow> getTvShows() {
-        return tvShows;
-    }
-
     public static TVShow getASingleTVShow(String Title) {
         for (TVShow tvShow : tvShows) {
             if (tvShow.getTitle().equalsIgnoreCase(Title)) {
@@ -39,10 +23,6 @@ class NetflixService implements searchAndShow_Interface {
         return null;
     }
 
-    public static void setTvShows(ArrayList<TVShow> tvShows) {
-        NetflixService.tvShows = tvShows;
-    }
-
     public User getCurrentUser() {
         return currentUser;
     }
@@ -51,10 +31,31 @@ class NetflixService implements searchAndShow_Interface {
         this.currentUser = currentUser;
     }
 
-    //Service - Related Functions
-    public void addTVShow(TVShow tvShow) {
-        tvShows.add(tvShow);
+    //Overriding
+    @Override
+    public void showList(ArrayList<TVShow> list) {
+        if (list != null) {
+            for (TVShow tvShow : list) {
+                System.out.println(tvShow.toString());
+            }
+
+        } else {
+            System.out.println("NOTHING FOUND TO SHOW");
+        }
+        System.out.println();
     }
+
+    @Override
+    public boolean doesTVShowExist(String title) {
+        for (TVShow tvShow : tvShows) {
+            if (tvShow.getTitle().equalsIgnoreCase(title)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Service - Related Functions
 
     public static boolean doesUserExist(String username) {
         for (User user : users) {
@@ -74,15 +75,6 @@ class NetflixService implements searchAndShow_Interface {
             return false;
         }
     }
-//    public static String createAccount(String username, String password) {
-//        if (!doesUserExist(username)) {
-//            User newUser = new User(username, password);
-//            users.add(newUser);
-//            System.out.println("AN ACCOUNT FOR USER " + newUser.getUserName() + " HAS BEEN SUCCESSFULLY CREATED\n");
-//        } else {
-//            System.out.println("THIS USERNAME ALREADY EXISTS\n");
-//        }
-//    }
 
     public boolean login(String username, String password) {
         for (User user : users) {
@@ -139,30 +131,6 @@ class NetflixService implements searchAndShow_Interface {
             return list;
         }
         return null;
-    }
-
-    @Override
-    public void showList(ArrayList<TVShow> list) {
-        if (list != null) {
-            for (TVShow tvShow : list) {
-                System.out.println(tvShow.toString());
-            }
-
-        } else {
-            System.out.println("NOTHING FOUND TO SHOW");
-        }
-        System.out.println();
-    }
-
-
-    @Override
-    public boolean doesTVShowExist(String title) {
-        for (TVShow tvShow : tvShows) {
-            if (tvShow.getTitle().equalsIgnoreCase(title)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
 
