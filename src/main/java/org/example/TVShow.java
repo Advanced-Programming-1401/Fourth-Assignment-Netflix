@@ -33,32 +33,16 @@ class TVShow {
         return genre;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public int getReleaseYear() {
         return releaseYear;
-    }
-
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
     }
 
     public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
-
     public ArrayList<String> getCast() {
         return cast;
-    }
-
-    public void setCast(ArrayList<String> cast) {
-        this.cast = cast;
     }
 
     @Override

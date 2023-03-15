@@ -25,32 +25,12 @@ class User implements searchAndShow_Interface {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getPassWord() {
         return passWord;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
-
     public ArrayList<TVShow> getFavorites() {
         return favorites;
-    }
-
-    public void setFavorites(ArrayList<TVShow> favorites) {
-        this.favorites = favorites;
-    }
-
-    public ArrayList<TVShow> getWatchHistory() {
-        return watchHistory;
-    }
-
-    public void setWatchHistory(ArrayList<TVShow> watchHistory) {
-        this.watchHistory = watchHistory;
     }
 
     public HashMap<TVShow, UserOpinion_Enum> getLikedTvShow() {
@@ -99,6 +79,8 @@ class User implements searchAndShow_Interface {
         return null;
     }
 
+
+    //Overriding
     @Override
     public void showList(ArrayList<TVShow> list) {
         if (list != null) {
@@ -110,6 +92,16 @@ class User implements searchAndShow_Interface {
         }
         System.out.println();
     }
+    @Override
+    public boolean doesTVShowExist(String title) {
+        for (TVShow tvShow : this.favorites) {
+            if (tvShow.getTitle().equalsIgnoreCase(title)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //User - Related Functions
     public void showList(HashMap<TVShow, UserOpinion_Enum> likedTvShow){
         if (likedTvShow.size() == 0){
             System.out.println("NOTHING FOUND TO SHOW");
@@ -126,17 +118,6 @@ class User implements searchAndShow_Interface {
     public void addToFavorites(TVShow show) {
         this.favorites.add(show);
         System.out.println(show.getTitle() + " HAS BEEN SUCCESSFULLY ADDED TO YOUR FAVORITES\n");
-    }
-
-    public void viewFavorites() {
-        if (this.favorites.size() != 0) {
-            System.out.println("A list of favorite shows:\n");
-            for (TVShow tvShow : this.favorites) {
-                System.out.println("Title: " + tvShow.getTitle() + ", Genre: " + tvShow.getGenre() + ", Release Year: " + tvShow.getReleaseYear() + ", Rating: " + tvShow.getRating());
-            }
-        } else {
-            System.out.println("You have no favorite Tv show");
-        }
     }
 
     public ArrayList<TVShow> getRecommendations() {
@@ -175,15 +156,6 @@ class User implements searchAndShow_Interface {
         return null;
     }
 
-    @Override
-    public boolean doesTVShowExist(String title) {
-        for (TVShow tvShow : this.favorites) {
-            if (tvShow.getTitle().equalsIgnoreCase(title)) {
-                return true;
-            }
-        }
-        return false;
-    }
     public void likeTvShow (TVShow tvShow){
         this.likedTvShow.putIfAbsent(tvShow, UserOpinion_Enum.INDIFFERENT);
 
