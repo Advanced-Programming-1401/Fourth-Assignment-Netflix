@@ -1,0 +1,69 @@
+@startuml NetflixUML
+class NetflixService {
+    +ArrayList<User> users
+    +ArrayList<TVShow> shows
+    +ArrayList<Movie> movies
+    +User user
+
+    +void addTVShow(TVShow tvShow)
+    +void addMovie(Movie movie)
+    +boolean createAccount(String username, String password)
+    +boolean login(String username, String password)
+    +void logout()
+    +ArrayList<TVShow> searchByTitle(String title)
+    +ArrayList<TVShow> searchByGenre(String genre)
+    +ArrayList<TVShow> searchByReleaseYear(int year)
+}
+
+class User {
+    +String username;
+    +String password;
+    +ArrayList<TVShow> favoriteShows;
+    +ArrayList<TVShow> history;
+
+    +User(String username, String password)
+    +String getUsername()
+    +String getPassword()
+    +ArrayList<TVShow> getFavorites()
+    +void setUsername(String username)
+    +void setPassword(String password)
+    +void setFavorites(ArrayList<TVShow> shows)
+    +ArrayList<TVShow> searchByTitle(String title)
+    +ArrayList<TVShow> searchByGenre(String genre)
+    +ArrayList<TVShow> searchByReleaseYear(int year)
+    +void watch(TVShow show)
+    +void addToFavorites(TVShow show)
+    +void viewFavorites()
+    +ArrayList<TVShow> getRecommendations()
+}
+
+class TVShow {
+    +String title;
+    +String genre;
+    +int year;
+    +int duration;
+    +float rating;
+    +ArrayList<String> cast;
+
+    +TVShow(String title, String genre, int year, int duration, float rating, ArrayList<String> cast)
+    +String getTitle()
+    +String getGenre()
+    +int getYear()
+    +int getDuration()
+    +float getRating()
+    +void setTitle(String title)
+    +void setGenre(String genre)
+    +void setYear(int year)
+    +void setDuration(int duration)
+    +void setRating(int rating)
+}
+
+class Movie extends TVShow {
+    +int length
+
+    +Movie(String title, String genre, int year, int duration, float rating, ArrayList<String> cast, int length)
+    +int getLength()
+    +void setLength(int length)
+}
+
+@enduml
