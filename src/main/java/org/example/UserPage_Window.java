@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UserPage {
+public class UserPage_Window {
     private NetflixService netflix;
 
-    public UserPage(NetflixService netflix) {
+    public UserPage_Window(NetflixService netflix) {
         this.netflix = netflix;
 
         JFrame frame = new JFrame();
@@ -51,7 +51,7 @@ public class UserPage {
                 if (e.getSource() == button1) {
 
                     //open a SEARCH THROUGH ALL MOVIES window
-                    new STA(netflix);
+                    new SearchThroughAll_Window(netflix);
                 }
             }
         });
@@ -62,7 +62,7 @@ public class UserPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new STF(netflix);
+                new SearchThroughFavorites_Window(netflix);
             }
         });
         JButton button3 = new JButton("RECOMMENDED TV-SHOWS FROM YOUR FAVORITES");
@@ -83,7 +83,7 @@ public class UserPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new ATUFT(netflix);
+                new AddTVShowToFavorites_Prompt(netflix);
             }
         });
         JButton button5 = new JButton("ADD TV-SHOW TO ALL THE MOVIES");
@@ -93,7 +93,7 @@ public class UserPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new ATAT(netflix);
+                new AddTVShowToAll_Prompt(netflix);
             }
         });
         JButton button6 = new JButton("LIKE OR DISLIKE A TV-SHOW");
@@ -103,7 +103,7 @@ public class UserPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new UOPINION(netflix);
+                new UserOpinion_Window(netflix);
             }
         });
         JButton button7 = new JButton("SHOW A LIST OF SUBMITTED OPINIONS(LIKE & DISLIKES)");
@@ -127,7 +127,7 @@ public class UserPage {
                 JOptionPane.showMessageDialog(null, "YOU HAVE BEEN SUCCESSFULLY LOGGED OUT", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
                 netflix.setCurrentUser(null);
                 frame.dispose();
-                new MainMenu(netflix);
+                new MainMenu_Window(netflix);
             }
         });
         JButton button9 = new JButton("BACK TO MAIN MENU");
@@ -138,7 +138,7 @@ public class UserPage {
             public void actionPerformed(ActionEvent e) {
 
                 frame.dispose();
-                new MainMenu(netflix);
+                new MainMenu_Window(netflix);
             }
         });
         button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));

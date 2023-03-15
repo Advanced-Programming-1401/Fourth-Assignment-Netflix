@@ -1,12 +1,11 @@
 package org.example;
 
 import javax.swing.*;
-import java.util.Scanner;
 
-public class CreatingAccountPage {
+public class CreatingAccount_Window {
     private NetflixService netflix;
 
-    public CreatingAccountPage(NetflixService netflix) {
+    public CreatingAccount_Window(NetflixService netflix) {
         this.netflix = netflix;
 
         String userName = JOptionPane.showInputDialog(null, "ENTER YOUR USERNAME");
@@ -16,6 +15,6 @@ public class CreatingAccountPage {
         } else {
             JOptionPane.showMessageDialog(null, "THIS USER ALREADY EXISTS", "NETFLIX ADMIN", JOptionPane.WARNING_MESSAGE);
         }
-        new MainMenu(netflix);
+        new MainMenu_Window(netflix);
     }
 }

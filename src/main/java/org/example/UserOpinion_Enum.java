@@ -1,6 +1,6 @@
 package org.example;
 
-public enum USEROPINION {
+public enum UserOpinion_Enum {
     LIKED,
     INDIFFERENT,
     DISLIKED

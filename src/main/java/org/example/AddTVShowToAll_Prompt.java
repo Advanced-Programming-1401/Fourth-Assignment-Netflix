@@ -3,10 +3,10 @@ package org.example;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class ATAT {
+public class AddTVShowToAll_Prompt {
     private NetflixService netflix;
 
-    public ATAT(NetflixService netflix) {
+    public AddTVShowToAll_Prompt(NetflixService netflix) {
         this.netflix = netflix;
 
         String title = JOptionPane.showInputDialog(null, "ENTER TITLE");

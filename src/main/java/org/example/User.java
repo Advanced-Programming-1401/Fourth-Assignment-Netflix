@@ -1,16 +1,15 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 
-class User implements searchAndShow{
+class User implements searchAndShow_Interface {
     private String userName;
     private String passWord;
     private ArrayList<TVShow> favorites;
     private ArrayList<TVShow> watchHistory;
-    private HashMap<TVShow, USEROPINION> likedTvShow;
+    private HashMap<TVShow, UserOpinion_Enum> likedTvShow;
 
     //Constructor
     public User(String userName, String passWord) {
@@ -54,7 +53,7 @@ class User implements searchAndShow{
         this.watchHistory = watchHistory;
     }
 
-    public HashMap<TVShow, USEROPINION> getLikedTvShow() {
+    public HashMap<TVShow, UserOpinion_Enum> getLikedTvShow() {
         return likedTvShow;
     }
 
@@ -111,7 +110,7 @@ class User implements searchAndShow{
         }
         System.out.println();
     }
-    public void showList(HashMap<TVShow, USEROPINION> likedTvShow){
+    public void showList(HashMap<TVShow, UserOpinion_Enum> likedTvShow){
         if (likedTvShow.size() == 0){
             System.out.println("NOTHING FOUND TO SHOW");
         }
@@ -186,24 +185,24 @@ class User implements searchAndShow{
         return false;
     }
     public void likeTvShow (TVShow tvShow){
-        this.likedTvShow.putIfAbsent(tvShow, USEROPINION.INDIFFERENT);
+        this.likedTvShow.putIfAbsent(tvShow, UserOpinion_Enum.INDIFFERENT);
 
-        if (this.likedTvShow.get(tvShow) == USEROPINION.LIKED){
+        if (this.likedTvShow.get(tvShow) == UserOpinion_Enum.LIKED){
             System.out.println("YOU HAVE ALREADY LIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
         }
         else {
-            this.likedTvShow.replace(tvShow, USEROPINION.LIKED);
+            this.likedTvShow.replace(tvShow, UserOpinion_Enum.LIKED);
             System.out.println("YOU HAVE LIKED " + tvShow.getTitle() + "\n");
         }
     }
     public void dislikeTvShow (TVShow tvShow){
-        this.likedTvShow.putIfAbsent(tvShow, USEROPINION.INDIFFERENT);
+        this.likedTvShow.putIfAbsent(tvShow, UserOpinion_Enum.INDIFFERENT);
 
-        if (this.likedTvShow.get(tvShow) == USEROPINION.DISLIKED){
+        if (this.likedTvShow.get(tvShow) == UserOpinion_Enum.DISLIKED){
             System.out.println("YOU HAVE ALREADY DISLIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
         }
         else {
-            this.likedTvShow.replace(tvShow, USEROPINION.DISLIKED);
+            this.likedTvShow.replace(tvShow, UserOpinion_Enum.DISLIKED);
             System.out.println("YOU HAVE DISLIKED " + tvShow.getTitle() + "\n");
         }
     }

@@ -1,14 +1,11 @@
 package org.example;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class ATUFT {
+public class AddTVShowToFavorites_Prompt {
     private NetflixService netflix;
 
-    public ATUFT(NetflixService netflix) {
+    public AddTVShowToFavorites_Prompt(NetflixService netflix) {
         this.netflix = netflix;
 
         String title = JOptionPane.showInputDialog(null, "ENTER TITLE");

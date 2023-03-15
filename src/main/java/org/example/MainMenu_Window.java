@@ -5,11 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu implements ActionListener {
+public class MainMenu_Window implements ActionListener {    //Main Menu Window Including 3 Options: 1-Creating An Account 2-Login As User 3-Exit
     private JFrame frame;
     private NetflixService netflix;
 
-    public MainMenu(NetflixService netflix) {
+    public MainMenu_Window(NetflixService netflix) {
+
         this.netflix = netflix;
         this.frame = new JFrame();
 
@@ -70,7 +71,7 @@ public class MainMenu implements ActionListener {
                 //if user clicked CREATE AN ACCOUNT button then :
                 if (e.getSource() == button1) {
                     frame.dispose();
-                    new CreatingAccountPage(netflix);
+                    new CreatingAccount_Window(netflix);
                 }
             }
         });
@@ -82,7 +83,7 @@ public class MainMenu implements ActionListener {
                 if (e.getSource() == button2) {
 
                     frame.dispose();
-                    new UserLogin(netflix);
+                    new UserLogin_Prompt(netflix);
                 }
             }
         });

@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         NetflixService netflix = new NetflixService(null);
-        new MainMenu(netflix);
+        new MainMenu_Window(netflix);
 
         //INITIALIZING DEFAULT MOVIE IN SITE
         ArrayList<String> cast = new ArrayList<>();

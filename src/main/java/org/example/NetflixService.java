@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-class NetflixService implements searchAndShow {
+class NetflixService implements searchAndShow_Interface {
     private static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<TVShow> tvShows = new ArrayList<>();
     private User currentUser;

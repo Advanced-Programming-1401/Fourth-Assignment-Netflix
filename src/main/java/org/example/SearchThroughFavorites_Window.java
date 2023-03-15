@@ -4,12 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 
-public class STA {
+public class SearchThroughFavorites_Window {
     private NetflixService netflix;
 
-    public STA(NetflixService netflix){
+    public SearchThroughFavorites_Window(NetflixService netflix) {
         this.netflix = netflix;
 
         JFrame frame = new JFrame();
@@ -33,26 +32,26 @@ public class STA {
         JLabel label1 = new JLabel();
         label1.setIcon(new ImageIcon("netflix main.jpg"));
         label1.setHorizontalAlignment(JLabel.CENTER);
-        label1.setForeground(Color.RED);
-        label1.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         //CURRENT USER
         JLabel label2 = new JLabel();
         label2.setText("CURRENT USER: " + netflix.getCurrentUser().getUserName().toUpperCase());
+        label2.setForeground(Color.red);
+        label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
         label2.setHorizontalAlignment(JLabel.CENTER);
 
         JButton button1 = new JButton("SEARCH BY TITLE");
         button1.setFocusable(false);
-        button1.setBackground(Color.red);
+        button1.setBackground(Color.RED);
         button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == button1){
+                if (e.getSource() == button1) {
 
-                   String title = JOptionPane.showInputDialog(null, "ENTER THE TITLE");
+                    String title = JOptionPane.showInputDialog(null, "ENTER THE TITLE");
                     JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                   netflix.showList(netflix.searchByTitle(title));
+                    netflix.showList(netflix.getCurrentUser().searchByTitle(title));
                 }
             }
         });
@@ -66,7 +65,7 @@ public class STA {
 
                 String genre = JOptionPane.showInputDialog(null, "ENTER THE GENRE");
                 JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                netflix.showList(netflix.searchByGenre(genre));
+                netflix.showList(netflix.getCurrentUser().searchByGenre(genre));
             }
         });
         JButton button3 = new JButton("SEARCH BY RELEASE YEAR");
@@ -79,9 +78,11 @@ public class STA {
 
                 int releaseYear = Integer.parseInt(JOptionPane.showInputDialog(null, "ENTER THE RELEASE YEAR"));
                 JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                netflix.showList(netflix.searchByReleaseYear(releaseYear));
+                netflix.showList(netflix.getCurrentUser().searchByReleaseYear(releaseYear));
             }
         });
+        button1.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
+        button2.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
         panel1.add(label1);
         panel1.add(label2);
         panel2.add(button1);

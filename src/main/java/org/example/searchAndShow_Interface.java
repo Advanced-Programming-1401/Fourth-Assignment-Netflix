@@ -1,10 +1,8 @@
 package org.example;
 
-import org.example.TVShow;
-
 import java.util.ArrayList;
 
-public interface searchAndShow {
+public interface searchAndShow_Interface {
     public ArrayList<TVShow> searchByTitle(String title);
 
     public ArrayList<TVShow> searchByGenre(String genre);
