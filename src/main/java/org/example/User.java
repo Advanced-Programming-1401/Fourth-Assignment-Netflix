@@ -117,7 +117,7 @@ class User implements searchAndShow_Interface {
 
     public void addToFavorites(TVShow show) {
         this.favorites.add(show);
-        System.out.println(show.getTitle() + " HAS BEEN SUCCESSFULLY ADDED TO YOUR FAVORITES\n");
+//        System.out.println(show.getTitle() + " HAS BEEN SUCCESSFULLY ADDED TO YOUR FAVORITES\n");
     }
 
     public ArrayList<TVShow> getRecommendations() {
@@ -160,22 +160,22 @@ class User implements searchAndShow_Interface {
         this.likedTvShow.putIfAbsent(tvShow, UserOpinion_Enum.INDIFFERENT);
 
         if (this.likedTvShow.get(tvShow) == UserOpinion_Enum.LIKED){
-            System.out.println("YOU HAVE ALREADY LIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
+//            System.out.println("YOU HAVE ALREADY LIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
         }
         else {
             this.likedTvShow.replace(tvShow, UserOpinion_Enum.LIKED);
-            System.out.println("YOU HAVE LIKED " + tvShow.getTitle() + "\n");
+//            System.out.println("YOU HAVE LIKED " + tvShow.getTitle() + "\n");
         }
     }
     public void dislikeTvShow (TVShow tvShow){
         this.likedTvShow.putIfAbsent(tvShow, UserOpinion_Enum.INDIFFERENT);
 
         if (this.likedTvShow.get(tvShow) == UserOpinion_Enum.DISLIKED){
-            System.out.println("YOU HAVE ALREADY DISLIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
+//            System.out.println("YOU HAVE ALREADY DISLIKED THIS TV-SHOW, YOU CANNOT DO IT AGAIN\n");
         }
         else {
             this.likedTvShow.replace(tvShow, UserOpinion_Enum.DISLIKED);
-            System.out.println("YOU HAVE DISLIKED " + tvShow.getTitle() + "\n");
+//            System.out.println("YOU HAVE DISLIKED " + tvShow.getTitle() + "\n");
         }
     }
 }

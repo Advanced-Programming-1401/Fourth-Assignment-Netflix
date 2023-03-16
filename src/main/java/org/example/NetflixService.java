@@ -16,7 +16,7 @@ class NetflixService implements searchAndShow_Interface {
     public static TVShow getASingleTVShow(String Title) {
         for (TVShow tvShow : tvShows) {
             if (tvShow.getTitle().equalsIgnoreCase(Title)) {
-                System.out.println("BANG");;
+//                System.out.println("BANG");;
                 return tvShow;
             }
         }
@@ -87,7 +87,7 @@ class NetflixService implements searchAndShow_Interface {
     }
 
     public void logout() {
-        System.out.println("User " + this.currentUser.getUserName() + " Successfully Logged Out!");
+//        System.out.println("User " + this.currentUser.getUserName() + " Successfully Logged Out!");
         this.currentUser = null;
     }
 

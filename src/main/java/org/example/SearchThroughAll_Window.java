@@ -39,6 +39,8 @@ public class SearchThroughAll_Window {
         JLabel label2 = new JLabel();
         label2.setText("CURRENT USER: " + netflix.getCurrentUser().getUserName().toUpperCase());
         label2.setHorizontalAlignment(JLabel.CENTER);
+        label2.setForeground(Color.RED);
+        label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         JButton button1 = new JButton("SEARCH BY TITLE");
         button1.setFocusable(false);
@@ -50,7 +52,7 @@ public class SearchThroughAll_Window {
                 if (e.getSource() == button1){
 
                    String title = JOptionPane.showInputDialog(null, "ENTER THE TITLE");
-                    JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showMessageDialog(null, "RESULTS WILL BE SHOWN IN THE TERMINAL PLEASE CHECK OUT THERE", "NETFLIX ADMIN", JOptionPane.INFORMATION_MESSAGE);
                    netflix.showList(netflix.searchByTitle(title));
                 }
             }
