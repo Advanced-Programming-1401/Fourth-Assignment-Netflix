@@ -106,24 +106,59 @@ class User {
         System.out.print("Your favorites are :\n" + favoriteShowList);
     }
 
-    public ArrayList<TVShow> getRecommendations() {
+    /*public ArrayList<TVShow> getRecommendations() {
         // Implement get recommendations logic here
-        System.out.println("************************* Suggested Movie *************************");
-        if(genre.equals("Mystery")){
+        /*System.out.println(" Suggested Movie ");
+        if(getGenre().equals("Mystery")){
             System.out.print("The Woman In the Window\nMurder Mystery\nKnives out\n");
         }
         if(genre.equals("Psychology/Fiction")){
             System.out.print("Seven\nFight Club\nBlack Swan\n");
         }
-        System.out.println("************************* Suggested TV Show *************************");
+        System.out.println(" Suggested TV Show ");
         if(genre.equals("Mystery")){
             System.out.print("Sharp Objects\nDefending Jacob\nThe Undoing\n");
         }
         if(genre.equals("Psychology/Fiction")){
             System.out.print("Lost\nDark\nStranger Things\n");
         }
-        return null;
-    }
+        return null;*/
+        /*private  NetflixService netflixService = new NetflixService();
+        private  User currentUser = null;
+
+            ArrayList<TVShow> recommendedShows = new ArrayList<>();
+
+            if (currentUser != null) {
+                // Get the user's watch history
+                ArrayList<TVShow> watchHistory = currentUser.getWatchHistoryList();
+
+                // Get all TV shows from the Netflix service
+                ArrayList<TVShow> allShows = netflixService.getTvShows();
+
+                // For each show in the user's watch history, add all shows in the same genre to the recommended list
+                for (TVShow watchedShow : watchHistory) {
+                    String genre = watchedShow.getGenre();
+                    for (TVShow show : allShows) {
+                        if (show.getGenre().equals(genre) && !watchHistory.contains(show) && !recommendedShows.contains(show)) {
+                            recommendedShows.add(show);
+                        }
+                    }
+                }
+
+                // If there are no shows recommended based on genre, add the top-rated shows
+                if (recommendedShows.isEmpty()) {
+                    for (TVShow show : allShows) {
+                        if (!watchHistory.contains(show) && show.getRating().equals("5")) {
+                            recommendedShows.add(show);
+                        }
+                    }
+                }
+            }
+
+            return recommendedShows;
+        }
+
+    }*/
 
     public void addHistory(TVShow tvShow){
         watchHistoryList.add(tvShow);

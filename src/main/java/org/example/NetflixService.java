@@ -87,7 +87,7 @@ class NetflixService {
         }
         return result;
     }
-    public ArrayList<Movie> searchMoviesByLength(int length) {
+    public ArrayList<Movie> searchMoviesByLength(ArrayList length) {
         ArrayList<Movie> result = new ArrayList<>();
         for (Movie movie : movieList) {
             if (movie.getLength() == length) {

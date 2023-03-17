@@ -1,4 +1,6 @@
 package org.example;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     //don't limit yourself to our template ***
@@ -19,7 +21,8 @@ public class Main {
     public static void runMenu(){
         //TODO:
         int choice = 0;
-        do {
+        while (choice == 0)
+        {
             System.out.println("Netflix Menu:");
             System.out.println("1. Create Account");
             System.out.println("2. Login");
@@ -49,7 +52,7 @@ public class Main {
                     String loginPassword = scanner.nextLine();
                     boolean loginSuccess = netflixService.login(loginUsername, loginPassword);
                     if (loginSuccess) {
-                        currentUser = netflixService.getCurrentUser();
+                        currentUser = netflixService.getUser();
                         System.out.println("Welcome, " + currentUser.getUsername() + "!");
                     } else {
                         System.out.println("Invalid username or password.");
@@ -92,11 +95,16 @@ public class Main {
                         String tvShowDuration = scanner.nextLine();
                         System.out.print("Enter rating: ");
                         String tvShowRating = scanner.nextLine();
-                        System.out.print("Enter cast (separated by commas): ");
+                        /*System.out.print("Enter cast (separated by commas): ");
                         String castString = scanner.nextLine();
-                        String[] castArray = castString.split(",");
-                        netflixService.addTVShow(new TVShow(tvShowTitle, tvShowGenre, tvShowYear, tvShowDuration, tvShowRating,
+                        String[] castArray = castString.split(",");*/
+                        ArrayList<String> cast = null;
+                        netflixService.addTVShow(new TVShow(tvShowTitle, tvShowGenre, tvShowYear, tvShowDuration, tvShowRating, cast));
+                        TVShow tvShow = null;
+                        netflixService.addTVShow(tvShow);
+                        System.out.println("TV show added successfully.");
                     }
+
                 case 8:
                     if (currentUser != null) {
                         System.out.println("Logging out...");
@@ -112,9 +120,9 @@ public class Main {
                         System.out.println("You are already logged in!");
                     } else {
                         System.out.print("Enter your username: ");
-                        String username = scanner.next();
+                        username = scanner.next();
                         System.out.print("Enter your password: ");
-                        String password = scanner.next();
+                        password = scanner.next();
 
                         if (netflixService.login(username, password)) {
                             System.out.println("Login successful!");
