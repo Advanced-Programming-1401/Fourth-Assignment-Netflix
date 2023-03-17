@@ -38,7 +38,17 @@ class NetflixService {
         movieList.add(movie);
     }
 
-    public void createAccount(String username, String password) {
+    public User createAccount(String username, String password) {
+        if(!userList.containsKey(username)) {
+            User user = new User(username , password);
+            userList.put(username , user);
+            return user;
+        }
+        return null;
+    }
+
+    public boolean login(String username, String password) {
+        // Implement login logic here
         if(userList.containsKey(username) && Objects.equals(userList.get(username).getPassword(), password)){
             currentUser = userList.get(username);
             return true;
@@ -46,11 +56,6 @@ class NetflixService {
         else{
             return false;
         }
-    }
-
-    public boolean login(String username, String password) {
-        // Implement login logic here
-        return false;
     }
 
     public void logout() {
