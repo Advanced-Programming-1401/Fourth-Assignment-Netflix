@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class TVShow {
     /*
@@ -14,14 +15,23 @@ class TVShow {
     private String rating;
     ArrayList<String> cast;
 
-    public TVShow(String title , String genre ,int releaseYear , String duration , String rating,
-                  ArrayList<String> cast){
+    public TVShow(String title , String genre ,int releaseYear , String duration , String rating , ArrayList<String> cast)
+    {
         this.title = title;
         this.genre = genre;
         this.releaseYear = releaseYear;
         this.duration = duration;
         this.rating = rating;
         this.cast = cast;
+    }
+
+    public TVShow() {
+        this.title = "";
+        this.genre = "";
+        this.releaseYear = 0;
+        this.duration = "";
+        this.rating = "";
+        this.cast = new ArrayList<>();
     }
 
 
