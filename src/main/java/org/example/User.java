@@ -9,7 +9,14 @@ class User {
     * FUNCTION: the user should have a function to watch a show and add it to watch history.
     *  *** NOTE: All search functions in user are for searching in favorite shows ***
     */
-
+    private String username;
+    private String password;
+    private ArrayList<TVShow> favoriteShows;
+    public User(String userName,String password){
+        this.username=username;
+        this.password=password;
+        this.favoriteShows=new ArrayList<>();
+    }
 
     public ArrayList<TVShow> searchByTitle(String title) {
         // Implement search by title in favorite shows  logic here
