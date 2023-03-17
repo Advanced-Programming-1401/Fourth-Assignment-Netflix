@@ -105,6 +105,5 @@ class NetflixService {
         this.user = user;
     }
 
-
 }
 

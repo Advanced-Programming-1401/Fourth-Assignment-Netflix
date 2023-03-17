@@ -9,6 +9,7 @@ class User {
     * FUNCTION: the user should have a function to watch a show and add it to watch history.
     *  *** NOTE: All search functions in user are for searching in favorite shows ***
     */
+
     private String username;
     private String password;
     ArrayList<User> userList;

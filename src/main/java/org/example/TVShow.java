@@ -8,6 +8,7 @@ class TVShow {
     *The TVShow should have a title , genre, release year, duration and a rating.
      *The TVShow should have an ArrayList of the cast.
      */
+
     private String title;
     private String genre;
     private int  releaseYear;

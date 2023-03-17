@@ -12,6 +12,7 @@ class Movie extends TVShow {
         super(title, genre, releaseYear, duration, rating, cast);
         this.length = length;
     }
+
     public ArrayList<String> getLength() {
         return length;
     }

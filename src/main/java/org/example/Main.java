@@ -9,7 +9,6 @@ public class Main {
     private static User currentUser = null;
     private static Scanner scanner = new Scanner(System.in);
 
-
     public static void main(String[] args) {
         // Creating some sample users
         netflixService.createAccount("user1", "password1");
